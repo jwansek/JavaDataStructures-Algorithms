@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.lang.Class;
 
 public class SortingAlgos {
 
@@ -109,6 +111,43 @@ public class SortingAlgos {
         return A;
     }
 
+    /* ************************************************************* */
+    // Name:        Merge Sort
+    // Basis:       Comparison
+    // Complexity:   - O(nlogn) in all cases
+    // Space:       O(n) memory usage (cannot sort in place)
+    // Stability:   Stable
+    // Informal Description:
+    //          Merge sort is a recursive algorithm. It works under
+    //          the principal that an array with 1 item in it is sorted.
+    //          In the divide stage, the array is split up into many 
+    //          arrays with single items using recursion. Then in the
+    //          conquer stage, elements are recursively merged together
+    //          linearlly.
+    //              Base Case:
+    //                  A single element, return it
+    //              Divide Stage:
+    //                  Split the array into two halves, left and right
+    //                  Recursively call mergeSort on these halves
+    //              Conquer Stage:
+    //                  Combine the two sorted arrays into one sorted
+    //                  array, using the merge() algorithm
+    // Notes:
+    //          Invented by von Neumann in 1945.
+    //          The operation is O(nlogn) which is pretty much as good
+    //          as you can get for general-purpose sorting algorithms.
+    //          It has the same complexity in every case, since it
+    //          fiddles with elements even if they're already sorted.
+    //          Consequently insertionSort will be faster if lots of the
+    //          elements are already sorted. Timsort merges the two
+    //          algorithms for the best preformance.
+    /* ************************************************************* */
+    public static <T extends Comparable<T>> T[] mergeSort(T[] A) {
+        throw new UnsupportedOperationException("Not supported yet.");
+        // return mergeSortRecurse(A, 0, A.length - 1);
+    }
+
+
     public static <T> void printArray(T[] A) {
         System.out.print("[");
         for (T i : A) {
@@ -119,8 +158,9 @@ public class SortingAlgos {
 
     public static void main(String[] args) {
         Integer myArray[] = {5, 6, 42, 12, 62, 9, 0, 21, 19};
-        printArray(selectionSort(myArray));
-        printArray(bubbleSort(myArray));
-        printArray(insertionSort(myArray));
+        // printArray(selectionSort(myArray));
+        // printArray(bubbleSort(myArray));
+        // printArray(insertionSort(myArray));
+        
     }
 }
