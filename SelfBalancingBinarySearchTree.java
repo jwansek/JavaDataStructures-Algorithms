@@ -95,6 +95,12 @@ public class SelfBalancingBinarySearchTree<T extends Comparable<T>> {
             }
             return leftHeight - rightHeight;
         }
+
+        public void leftRotate() {
+            BinaryTreeNode<T> newRoot = getRightChild();
+            newRoot.leftChild = this;
+            this.rightChild = newRoot.getLeftChild();
+        }
     }
 
     public static class DuplicateItemException extends Exception {
@@ -380,47 +386,62 @@ public class SelfBalancingBinarySearchTree<T extends Comparable<T>> {
     
     public static void main(String[] args) {
         SelfBalancingBinarySearchTree<Integer> bst = new SelfBalancingBinarySearchTree<>();
+        // try {
+        //     bst.recursiveAdd(25);
+        //     bst.recursiveAdd(15);
+        //     bst.recursiveAdd(50);
+        //     bst.recursiveAdd(10);
+        //     bst.recursiveAdd(22);
+        //     bst.iterativeAdd(35);
+        //     bst.iterativeAdd(70);
+        //     bst.iterativeAdd(4);
+        //     bst.iterativeAdd(12);
+        //     bst.iterativeAdd(18);
+        //     bst.iterativeAdd(24);
+        //     bst.iterativeAdd(31);
+        //     bst.iterativeAdd(44);
+        //     bst.iterativeAdd(66);
+        //     bst.iterativeAdd(90);
+        // } catch (DuplicateItemException e) {
+        //     e.printStackTrace();
+        // }
+
+        // System.out.println("In-Order Traversal:");
+        // for (Integer s : bst.new InOrderIterator()) {
+        //     System.out.print(s + ", ");
+        // }
+        // System.out.println("");
+        // System.out.println("\nPre-Order Traversal:");
+        // for (Integer s : bst.new PreOrderIterator()) {
+        //     System.out.print(s + ", ");
+        // }
+        // System.out.println("");
+        // System.out.println("\nPost-Order Traversal:");
+        // for (Integer s : bst.new PostOrderIterator()) {
+        //     System.out.print(s + ", ");
+        // }
+        // System.out.println("");
+        // System.out.println("\nBreadth first Traversal:");
+        // for (Integer s : bst.new BreadthFirstIterator()) {
+        //     System.out.print(s + ", ");
+        // }
+        // System.out.println("\n");
         try {
-            bst.recursiveAdd(25);
-            bst.recursiveAdd(15);
-            bst.recursiveAdd(50);
-            bst.recursiveAdd(10);
-            bst.recursiveAdd(22);
-            bst.iterativeAdd(35);
-            bst.iterativeAdd(70);
-            bst.iterativeAdd(4);
-            bst.iterativeAdd(12);
-            bst.iterativeAdd(18);
-            bst.iterativeAdd(24);
-            bst.iterativeAdd(31);
-            bst.iterativeAdd(44);
-            bst.iterativeAdd(66);
-            bst.iterativeAdd(90);
+            bst.recursiveAdd(9);
+            bst.recursiveAdd(6);
+            bst.recursiveAdd(20);
+            bst.recursiveAdd(4);
+            bst.recursiveAdd(7);
+            bst.iterativeAdd(15);
+            bst.iterativeAdd(26);
+            bst.iterativeAdd(22);
+            bst.iterativeAdd(30);
         } catch (DuplicateItemException e) {
             e.printStackTrace();
         }
 
-        System.out.println("In-Order Traversal:");
-        for (Integer s : bst.new InOrderIterator()) {
-            System.out.print(s + ", ");
-        }
-        System.out.println("");
-        System.out.println("\nPre-Order Traversal:");
-        for (Integer s : bst.new PreOrderIterator()) {
-            System.out.print(s + ", ");
-        }
-        System.out.println("");
-        System.out.println("\nPost-Order Traversal:");
-        for (Integer s : bst.new PostOrderIterator()) {
-            System.out.print(s + ", ");
-        }
-        System.out.println("");
-        System.out.println("\nBreadth first Traversal:");
-        for (Integer s : bst.new BreadthFirstIterator()) {
-            System.out.print(s + ", ");
-        }
-        System.out.println("\n");
-
+        System.out.println(bst);
+        bst.root.leftRotate();
         System.out.println(bst);
     }
 }
